@@ -3,116 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Redirigiendo...</title>
-  <!-- Fuente moderna -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-  
-  <style>
-    :root {
-      --primary: #2563eb;
-      --primary-hover: #1d4ed8;
-      --bg: #f8fafc;
-      --text-main: #0f172a;
-      --text-muted: #64748b;
-      --card-bg: #ffffff;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: 'Inter', system-ui, -apple-system, sans-serif;
-      background-color: var(--bg);
-      color: var(--text-main);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      padding: 20px;
-      /* Patrón de fondo sutil */
-      background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
-      background-size: 24px 24px;
-    }
-
-    .card {
-      background: var(--card-bg);
-      padding: 3rem 2rem;
-      border-radius: 20px;
-      box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.08), 0 4px 10px -2px rgba(0, 0, 0, 0.04);
-      text-align: center;
-      max-width: 420px;
-      width: 100%;
-      border: 1px solid rgba(0, 0, 0, 0.05);
-      animation: slideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    @keyframes slideUp {
-      from { opacity: 0; transform: translateY(15px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* Spinner de carga */
-    .spinner {
-      width: 50px;
-      height: 50px;
-      border: 4px solid #e2e8f0;
-      border-top-color: var(--primary);
-      border-radius: 50%;
-      margin: 0 auto 1.5rem;
-      animation: spin 0.8s linear infinite;
-    }
-
-    @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
-
-    /* Icono de error (por si no se encuentra el enlace) */
-    .error-icon {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-      display: none;
-    }
-
-    h1 {
-      font-size: 1.5rem;
-      font-weight: 800;
-      margin-bottom: 0.5rem;
-      letter-spacing: -0.02em;
-    }
-
-    p {
-      color: var(--text-muted);
-      font-size: 0.95rem;
-      line-height: 1.5;
-    }
-
-    .btn {
-      display: inline-block;
-      margin-top: 1.5rem;
-      padding: 0.75rem 1.5rem;
-      background-color: var(--primary);
-      color: white;
-      text-decoration: none;
-      border-radius: 10px;
-      font-weight: 600;
-      font-size: 0.95rem;
-      transition: background-color 0.2s, transform 0.1s;
-    }
-
-    .btn:hover {
-      background-color: var(--primary-hover);
-    }
-
-    .btn:active {
-      transform: scale(0.97);
-    }
-
-    /* Ocultar botón inicialmente */
-    #btn-home { display: none; }
-  </style>
+  <link rel="stylesheet" href="./assets/css/main.css">
+  <link rel="stylesheet" href="./assets/css/404.css">
+  <title>Redirigiendo...</title>
 </head>
 <body>
 
@@ -129,44 +23,7 @@
     <a href="./" class="btn" id="btn-home">Volver al inicio</a>
   </div>
 
-  <script type="module">
-        import enlaces from './enlaces.json' with { type: 'json' };
-    // Mapa de URLs
-    const shortUrls = enlaces.reduce((acc,item)=>{
-      const [key,label,link]=item;
-      acc[key]=link;
-      return acc;
-    },{});
-
-    // Obtener el código de la URL (ej: /redirect/google -> google)
-    const code = location.pathname.split('/').filter(Boolean).at(-1) || '';
-
-    if (code && shortUrls[code]) {
-      // El enlace existe -> Redirigir
-      const target = shortUrls[code];
-      const sep = target.includes('?') ? '&' : '?';
-      
-      // Pequeño delay para que se vea la animación (opcional, quita el setTimeout si quieres inmediatez)
-      setTimeout(() => {
-        location.replace(target + sep + 't=' + Date.now());
-      }, 600); 
-
-    } else {
-      // El enlace NO existe -> Cambiar a UI de error
-      document.title = 'Enlace no encontrado';
-      
-      // Ocultar spinner y mostrar error
-      document.getElementById('spinner').style.display = 'none';
-      document.getElementById('error-icon').style.display = 'block';
-      
-      // Cambiar textos
-      document.getElementById('title').innerText = 'Enlace no encontrado';
-      document.getElementById('message').innerText = 'El enlace corto que buscas no existe o ha expirado.';
-      
-      // Mostrar botón para volver
-      document.getElementById('btn-home').style.display = 'inline-block';
-    }
-  </script>
+  <script src="./assets/js/404.js" type="module"></script>
 
 </body>
 </html>
