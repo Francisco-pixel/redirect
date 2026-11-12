@@ -25,7 +25,7 @@ class AppHead extends HTMLElement {
         document.head.appendChild(template.content);
         
         // Ocultamos la etiqueta <app-head> si el navegador la dejó en el body
-        this.style.display = 'none';
+        this.remove();
     }
 }
 
