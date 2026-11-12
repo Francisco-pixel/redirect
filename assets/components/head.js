@@ -16,6 +16,7 @@ class AppHead extends HTMLElement {
             <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
             ${cssLinks}
         `;
+        this.style.display = 'none'; 
     }
 }
 
