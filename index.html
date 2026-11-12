@@ -3,26 +3,156 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Redirect...</title>
+    <title>Mis Enlaces</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-body: #f8fafc;
+            --bg-card: #ffffff;
+            --bg-enlace: #2563eb;
+            --bg-hover-enlace: #1d4ed8;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --border-color: rgba(0, 0, 0, 0.05);
+            --shadow-card: 0 10px 30px -5px rgba(0, 0, 0, 0.08), 0 4px 10px -2px rgba(0, 0, 0, 0.04);
+            --pattern-dot: #cbd5e1;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-body: #0f172a;
+                --bg-card: #1e293b;
+                --bg-enlace: #3b82f6;
+                --bg-hover-enlace: #2563eb;
+                --text-main: #f8fafc;
+                --text-muted: #94a3b8;
+                --border-color: rgba(255, 255, 255, 0.05);
+                --shadow-card: 0 10px 30px -5px rgba(0, 0, 0, 0.3);
+                --pattern-dot: #334155;
+            }
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            padding: 20px;
+            background-image: radial-gradient(var(--pattern-dot) 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+
+        .card {
+            background: var(--bg-card);
+            padding: 2.5rem 2rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow-card);
+            border: 1px solid var(--border-color);
+            text-align: center;
+            width: 100%;
+            max-width: 380px;
+            animation: slideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        p.subtitle {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+        }
+
+        .links-container {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 20px;
+            background-color: var(--bg-enlace);
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 4px rgba(37, 99, 235, 0.2);
+        }
+
+        a:hover {
+            background-color: var(--bg-hover-enlace);
+            transform: translateY(-2px); /* Corregido: Y en mayúscula */
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        }
+
+        a:active {
+            transform: translateY(0);
+        }
+
+        .footer {
+            margin-top: 2rem;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+    </style>
 </head>
 <body>
-    <p>Redirect...</p>
-  <script>
-    const shortUrls = {
-      preiet: 'https://ideice.gob.do/programas/preiet',
-      preie:  'https://ideice.gob.do/pdf/preie/preie-programa-neiba.pdf',
-      google: 'https://www.google.com/'
-    };
+    <main class="card">
+        <h1>Mis Enlaces</h1>
+        <p class="subtitle">Selecciona un destino</p>
+        
+        <div class="links-container" id="links-container"></div>
 
-    const key = location.pathname.split('/').at(-1);
-    
-    if (key && shortUrls[key]) {
-      const target = shortUrls[key];
-      const sep = target.includes('?') ? '&' : '?';
-      location.replace(target + sep + 't=' + Date.now());
-    } else {
-      document.body.innerHTML = '<h1>404</h1><p>Short URL not found</p>';
-    }
-  </script>
+        <div class="footer">Acortador de URLs</div>
+    </main>
+
+    <script>
+        // Configuración centralizada
+        const DOM = {
+            CONTAINER: '#links-container'
+        };
+        
+        const BASE_URL = '/redirect/';
+        
+        // Nota: Verifica si el código es 'preie' o 'preiee'
+        const enlaces = [
+            ['google', 'Google'],
+            ['preiet', 'PREIET'],
+            ['preie', 'PREIE PDF']
+        ];
+
+        const container = document.querySelector(DOM.CONTAINER);
+
+        enlaces.forEach(([code, label]) => {
+            const a = document.createElement('a');
+            a.href = `${BASE_URL}${code}`;
+            a.textContent = label;
+            container.appendChild(a);
+        });
+    </script>
 </body>
 </html>
