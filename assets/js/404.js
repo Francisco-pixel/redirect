@@ -48,7 +48,7 @@ export function init404() {
         document.querySelector(DOM.MESSAGE).innerText = MESSAGE.MESSAGE;
         
         // Calcular la ruta raíz para el botón de volver
-        const basePath = window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/') + 1);
+        const basePath = './';
         const btnHome = document.querySelector(DOM.BTN_HOME);
         btnHome.href = basePath;
         btnHome.style.display = STYLE.BTN_HOME;
