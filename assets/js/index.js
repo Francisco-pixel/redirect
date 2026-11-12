@@ -14,6 +14,6 @@
                 href:`${BASE_URL}${code}`,
                 textContent:label
             }
-            const a = crearTag(DOM.A,propertys);
+            const a = createTag(DOM.A,propertys);
             container.appendChild(a);
         });
