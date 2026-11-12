@@ -12,7 +12,8 @@
         enlaces.forEach(([code, label]) => {
             const propertys={
                 href:`${BASE_URL}${code}`,
-                textContent:label
+                textContent:label,
+                className:'btn'
             }
             const a = createTag(DOM.A,propertys);
             container.appendChild(a);
