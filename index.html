@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirect...</title>
+</head>
+<body>
+    <p>Redirect...</p>
+  <script>
+    const shortUrls = {
+      preiet: 'https://ideice.gob.do/programas/preiet',
+      preie:  'https://ideice.gob.do/pdf/preie/preie-programa-neiba.pdf',
+      google: 'https://www.google.com/'
+    };
+
+    const key = location.pathname.split('/').at(-1);
+    
+    if (key && shortUrls[key]) {
+      const target = shortUrls[key];
+      const sep = target.includes('?') ? '&' : '?';
+      location.replace(target + sep + 't=' + Date.now());
+    } else {
+      document.body.innerHTML = '<h1>404</h1><p>Short URL not found</p>';
+    }
+  </script>
+</body>
+</html>
