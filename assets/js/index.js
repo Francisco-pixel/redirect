@@ -6,11 +6,13 @@ export function initIndex() {
         CONTAINER: '#links-container',
         A: 'a'
     };
-    
+
+    // Ruta dinámica (Ej: "/redirect/" o "/")
     const BASE_URL = './';
 
-    const container = document.querySelector(DOM.CONTAINER);    
+    const container = document.querySelector(DOM.CONTAINER);
     
+    // Seguridad: si no estamos en el index, no hacemos nada
     if (!container) return;
 
     enlaces.forEach(([code, label]) => {

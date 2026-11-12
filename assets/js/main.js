@@ -1,16 +1,13 @@
-// main.js
 import { initIndex } from './index.js';
 import { init404 } from './404.js';
 
-// 1. Obtenemos el último pedazo de la URL (ej: "google", "index.html", "")
-const path = location.pathname;
-const lastSegment = path.split('/').filter(Boolean).pop() || '';
+// Verificamos en qué página estamos mirando el DOM
+const isHomePage = document.getElementById('links-container') !== null;
+const isRedirectPage = document.getElementById('spinner') !== null;
 
-const isShortLink = lastSegment !== '' && !lastSegment.includes('.');
-
-
-if (isShortLink) {
-    init404(); 
-} else {
+// Ejecutamos la lógica correspondiente
+if (isHomePage) {
     initIndex();
+} else if (isRedirectPage) {
+    init404();
 }
