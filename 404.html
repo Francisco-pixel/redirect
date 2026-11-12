@@ -129,13 +129,14 @@
     <a href="/" class="btn" id="btn-home">Volver al inicio</a>
   </div>
 
-  <script>
+  <script type="module">
+        import enlaces from './enlaces.json' with { type: 'json' };
     // Mapa de URLs
-    const shortUrls = {
-      preiet: 'https://ideice.gob.do/programas/preiet',
-      preie:  'https://ideice.gob.do/pdf/preie/preie-programa-neiba.pdf',
-      google: 'https://www.google.com/'
-    };
+    const shortUrls = enlaces.reduce((acc,item)=>{
+      const [key,label,link]=item;
+      acc[key]=link;
+      return acc;
+    },{});
 
     // Obtener el código de la URL (ej: /redirect/google -> google)
     const code = location.pathname.split('/').filter(Boolean).at(-1) || '';
