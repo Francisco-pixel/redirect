@@ -130,20 +130,15 @@
         <div class="footer">Acortador de URLs</div>
     </main>
 
-    <script>
+    <script type="module">
+        import enlaces from './enlaces.json' with { type: 'json' };
+
         // Configuración centralizada
         const DOM = {
             CONTAINER: '#links-container'
         };
         
         const BASE_URL = '/redirect/';
-        
-        // Nota: Verifica si el código es 'preie' o 'preiee'
-        const enlaces = [
-            ['google', 'Google'],
-            ['preiet', 'PREIET'],
-            ['preie', 'PREIE PDF']
-        ];
 
         const container = document.querySelector(DOM.CONTAINER);
 
