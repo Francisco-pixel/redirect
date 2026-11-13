@@ -24,8 +24,6 @@ class AppHead extends HTMLElement {
         // Movemos todo el contenido del template directamente al <head> de la página
         document.head.appendChild(template.content);
         
-        // Ocultamos la etiqueta <app-head> si el navegador la dejó en el body
-        this.remove();
     }
 }
 
