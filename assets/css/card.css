@@ -1,0 +1,71 @@
+.card {
+    background: var(--bg-card);
+    padding: 2.5rem 1.5rem;
+    border-radius: .5em;
+    box-shadow: var(--shadow-card);
+    border: 1px solid var(--border-color);
+    text-align: center;
+    width: min(100%, 400px);
+
+    h1 {
+        color: var(--text-main);
+        font-size: 1.5em;
+    }
+
+    &,
+    #enlaces {
+        display: grid;
+        gap: 1em;
+    }
+
+    .icon {
+        font-size: 2em;
+    }
+
+    #enlaces {
+        a {
+            display: block;
+            text-decoration: none;
+            padding: 1em;
+            background: var(--bg-enlace);
+            transition: all .3s ease;
+            color: #fff;
+            border-radius: .5em;
+
+            &:hover {
+                background: var(--bg-hover-enlace);
+            }
+        }
+    }
+
+    
+    .subtitle {
+        font-size: 0.75rem;
+        color: var(--text-muted);
+    }
+
+    .footer {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1em;
+        color:var(--text-muted);
+        &::after,
+        &::before {
+            content: "";
+            flex: 1;
+            height: 2px;
+            background: var(--text-muted);
+        }
+    }
+
+    .btn-inicio {
+        text-decoration: none;
+        color: var(--bg-enlace);
+        transition: all .3s ease;
+
+        &:hover {
+            color: var(--bg-hover-enlace);
+        }
+    }
+}
