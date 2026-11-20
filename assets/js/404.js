@@ -2,11 +2,11 @@ import enlaces from '../../enlaces.json' with { type: 'json' };
 
 export function init404() {
     const DOM = {
-        SPINNER: '#spinner',
-        ERROR_ICON: '#error-icon',
-        TITLE: '#title',
-        MESSAGE: '#message',
-        BTN_HOME: '#btn-home'
+        SPINNER: '.spinner',
+        ERROR_ICON: '.icon',
+        TITLE: '.title',
+        MESSAGE: '.message',
+        BTN_HOME: '.btn-inicio'
     };
 
     const MESSAGE = {
